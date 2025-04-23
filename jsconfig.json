@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "egg": ["node_modules/egg"],
+      "egg-sequelize": ["node_modules/egg-sequelize"]
+    },
+    "checkJs": true,
+    "allowJs": true
+  },
+  "include": [
+    "**/*"
+  ]
+}
