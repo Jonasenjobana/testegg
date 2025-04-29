@@ -8,13 +8,13 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  const config = {};
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1745392718245_2900';
 
   // add your middleware config here
-  config.middleware = [ 'apiResponse', 'auth' ];
+  config.middleware = [ 'auth', 'apiResponse' ];
   // 移除 config.auth.ignore 配置
   // config.auth = {
   //   ignore: [ '/api/login' ] 
@@ -46,11 +46,11 @@ module.exports = appInfo => {
     }
   };
   // 暂时关闭csrf
-  config.security = {
+  config.security = Object.assign({}, config.security, {
     csrf: {
       enable: false,
     },
-  };
+  });
 
   return {
     ...config,

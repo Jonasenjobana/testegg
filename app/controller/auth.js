@@ -15,7 +15,7 @@ class authController extends Controller {
         password: password
       }
     });
-
+    ctx.logger.info('user',user)
     if (user) {
       // 验证成功，生成 JWT token
       const token = jwt.sign({ username }, ctx.app.config.jwtSecret || 'your_jwt_secret_key', { expiresIn: '1h' });
@@ -27,7 +27,7 @@ class authController extends Controller {
         encrypt: true // 对 cookie 进行加密
       });
 
-      ctx.body = { message: '登录成功', token };
+      ctx.body = { token, userInfo: JSON.parse(JSON.stringify(user)) };
     } else {
       // 验证失败，抛出错误
       throw new Error('用户名或密码错误');

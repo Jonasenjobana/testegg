@@ -12,7 +12,7 @@ module.exports = () => {
       } else {
         info = '系统异常';
       }
-      ctx.status = ctx.status || 500;
+      ctx.status = 200;
     }
 
     if (ctx.path.startsWith('/api')) {
